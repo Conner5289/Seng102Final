@@ -12,30 +12,29 @@ public class saveTextWindow extends JFrame{
     private JPanel savePanel;
     private JButton saveFile;
 
-    public saveTextWindow(){
+
+    public saveTextWindow(String userTxt){
         setVisible(true);
         setSize(250,75);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setContentPane(savePanel);
+        setTitle("Save");
 
         saveFile.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 String fileName = fileNameTxtArea.getText();//Gets text in text area
-                File newFile = new File(fileName);
 
                 try {
-                    newFile.createNewFile();
+                    FileWriter fileInput = new FileWriter(fileName);
+                    fileInput.write(userTxt);
+                    fileInput.close();
                 } catch (IOException ex) {
-                    throw new RuntimeException(ex);//makes new file from user input
+                    throw new RuntimeException(ex);
                 }
-                FileWriter fileInput = new FileWriter(fileName);
 
-                fileInput.write(mainGui.getText());
-                fileInput.close();
                 dispose();//closes save window
-
             }
         });
     }
