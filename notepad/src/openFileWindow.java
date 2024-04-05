@@ -26,15 +26,17 @@ public class openFileWindow extends JFrame{
                 String txtData = null;
                 StringBuilder fileData = new StringBuilder();
                 String userFile = openTextField.getText();
+                //opens and reads the file that the user input
                 try {
                     FileInputStream fileIn = new FileInputStream(userFile);
                     Scanner reader = new Scanner(fileIn);
                     while (reader.hasNext()){
                         txtData = reader.nextLine();
-                        fileData.append(txtData);
+                        fileData.append(txtData);//puts all of the files txt into one string
                     }
+                    //brings back the main gui with the files contents
                     mainGui gui = new mainGui();
-                    gui.setText(String.valueOf(fileData));
+                    gui.setText(String.valueOf(fileData));//turns fileDate into a string from a string builder and the sets the textArea
                 } catch (FileNotFoundException ex) {
                     System.out.println("That file does not exist");
                 }

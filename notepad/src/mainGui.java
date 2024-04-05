@@ -21,7 +21,7 @@ public class mainGui extends  JFrame{
 
 
     public void makeListener(){
-        //-------Action listener for save button
+        //-------Action listener for save button makes a new gui of saveTextWindow
         saveButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -31,7 +31,7 @@ public class mainGui extends  JFrame{
             }
         });
 
-        //---------Actions listener fo save button
+        //---------Actions listener fo save button makes new gui of openFileWindow
         openButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

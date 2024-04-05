@@ -26,6 +26,8 @@ public class saveTextWindow extends JFrame{
                 super.mouseClicked(e);
                 String fileName = fileNameTxtArea.getText();//Gets text in text area
 
+                //makes are writes file to the name that the user made
+                //TODO make the file auto append .txt
                 try {
                     FileWriter fileInput = new FileWriter(fileName);
                     fileInput.write(userTxt);
