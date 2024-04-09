@@ -30,13 +30,14 @@ public class openFileWindow extends JFrame{
                 try {
                     FileInputStream fileIn = new FileInputStream(userFile);
                     Scanner reader = new Scanner(fileIn);
-                    while (reader.hasNext()){
-                        txtData = reader.nextLine();
-                        fileData.append(txtData);//puts all of the files txt into one string
-                    }
-                    //brings back the main gui with the files contents
                     mainGui gui = new mainGui();
-                    gui.setText(String.valueOf(fileData));//turns fileDate into a string from a string builder and the sets the textArea
+                    gui.setVisible(true);
+                    while (reader.hasNext()){
+                        txtData = reader.nextLine() + "\n";
+                        gui.setText(txtData);
+                    }
+                    dispose();
+                    //brings back the main gui with the files contents
                 } catch (FileNotFoundException ex) {
                     System.out.println("That file does not exist");
                 }

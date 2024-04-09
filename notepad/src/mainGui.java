@@ -44,6 +44,6 @@ public class mainGui extends  JFrame{
 
 
     public void setText(String text){
-        textArea.setText(text);
+        textArea.append(text);
     }
 }
