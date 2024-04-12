@@ -34,7 +34,7 @@ public class openFileWindow extends JFrame{
                     gui.setVisible(true);
                     while (reader.hasNext()){
                         txtData = reader.nextLine() + "\n";
-                        gui.setText(txtData);
+
                     }
                     dispose();
                     //brings back the main gui with the files contents
