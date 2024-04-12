@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,28 +35,24 @@ public class saveTextWindow extends JFrame{
                 String fileName;
                 int i = 0;
 
-                do {
-                    fileName = fileNameTxtArea.getText() + ".txt";//Gets text in text area
-                    Matcher regexMatcher = regexPat.matcher(fileName);
+                fileName = fileNameTxtArea.getText() + ".txt";//Gets text in text area
+                Matcher regexMatcher = regexPat.matcher(fileName);
+                regex = regexMatcher.matches();
+                while (!regex){
+
+                    setVisible(false);
+                    JOptionPane.showMessageDialog(null,"That is not a usable filename");
+                    fileNameTxtArea.setText(null);
+                    setVisible(true);
+                    fileName = fileNameTxtArea.getText();
+                    Scanner srcn = new Scanner(fileName);
+                    fileName= srcn.nextLine();
+                    regexMatcher = regexPat.matcher(fileName);
                     regex = regexMatcher.matches();
-                    if(!regex){
-                        setVisible(false);//setVis for save panel
-                        String tempTxt = JOptionPane.showInputDialog("That is not a usable filename");
 
-
-                        //todo try to get the loop to stop for new user input
-                        notGoodName.setVisible(true);
-                        fileNameTxtArea.setText(tempTxt);
-                        fileName = fileNameTxtArea.getText() + ".txt";//Gets text in text area
-                        regexMatcher = regexPat.matcher(fileName);
-                        regex = regexMatcher.matches();
-                        notGoodName.setVisible(false);
-                        setVisible(true);
-
-                    }
-                    System.out.println(i);
-                    i++;
-                }while (!regex);
+                }
+                System.out.println(i);
+                i++;
 
                 //makes are writes file to the name that the user made
                 try {
@@ -69,8 +66,5 @@ public class saveTextWindow extends JFrame{
                 dispose();//closes save window
             }
         });
-    }
-
-    private void createUIComponents() {
     }
 }
