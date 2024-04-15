@@ -24,6 +24,9 @@ public class saveTextWindow extends JFrame{
         setContentPane(savePanel);
         setTitle("Save");
         notGoodName.setVisible(false);
+        setResizable(false);
+        setLocation(750, 250);
+
 
         saveFile.addMouseListener(new MouseAdapter() {
             @Override

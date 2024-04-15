@@ -16,9 +16,11 @@ public class openFileWindow extends JFrame{
     public openFileWindow(){
         setVisible(true);
         setSize(250, 75);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(openPanel);
         setTitle("Open");
+        setResizable(false);
+        setLocation(750, 250);
 
         openButton.addActionListener(new ActionListener() {
             @Override
@@ -39,7 +41,7 @@ public class openFileWindow extends JFrame{
                     dispose();
                     //brings back the main gui with the files contents
                 } catch (FileNotFoundException ex) {
-                    System.out.println("That file does not exist");
+                    JOptionPane.showMessageDialog(null,"That file does not exist");
                 }
             }
         });

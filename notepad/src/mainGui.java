@@ -17,6 +17,10 @@ public class mainGui extends  JFrame{
         setContentPane(mainPanel);
         setTitle("Notepad");
         makeListener();
+        setResizable(false);
+        setLocation(500, 125);
+        textArea.setLineWrap(true);
+
     }
 
 
