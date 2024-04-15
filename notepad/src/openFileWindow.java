@@ -32,12 +32,15 @@ public class openFileWindow extends JFrame{
                 try {
                     FileInputStream fileIn = new FileInputStream(userFile);
                     Scanner reader = new Scanner(fileIn);
-                    mainGui gui = new mainGui();
-                    gui.setVisible(true);
                     while (reader.hasNext()){
                         txtData = reader.nextLine() + "\n";
-
+                        fileData.append(txtData);
                     }
+                    mainGui gui = new mainGui();
+                    gui.setText(fileData.toString());
+                    gui.setVisible(true);
+                    System.out.println(fileData.toString());
+
                     dispose();
                     //brings back the main gui with the files contents
                 } catch (FileNotFoundException ex) {
